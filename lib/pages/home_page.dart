@@ -1,0 +1,94 @@
+import 'package:agriculture_app/pages/cart_page.dart';
+import 'package:agriculture_app/pages/explore_page.dart';
+import 'package:agriculture_app/pages/profile_page.dart';
+import 'package:agriculture_app/pages/service_page.dart';
+import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
+import 'package:badges/badges.dart' as badges;
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List pageList = const [
+    ExplorePage(),
+    ServicePage(),
+    CartPage(),
+    ProfilePage(),
+  ];
+  int pageIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: const Drawer(),
+      appBar: AppBar(
+        centerTitle: false,
+        leading: const Icon(Icons.menu),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hi HieuNguyen !!',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            Text(
+              'Enjoy our service',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton.filledTonal(
+              onPressed: () {},
+              icon: badges.Badge(
+                position: badges.BadgePosition.topEnd(top: -15, end: -12),
+                badgeStyle: const badges.BadgeStyle(
+                  badgeColor: Colors.green,
+                ),
+                badgeContent: const Text('2'),
+                child: const Icon(IconlyBroken.notification),
+              ),
+            ),
+          )
+        ],
+      ),
+      body: pageList[pageIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: pageIndex,
+          onTap: (value) {
+            setState(() {
+              pageIndex = value;
+            });
+          },
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(IconlyLight.home),
+              activeIcon: Icon(IconlyBold.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(IconlyLight.call),
+              activeIcon: Icon(IconlyBold.call),
+              label: 'Service',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(IconlyLight.buy),
+              activeIcon: Icon(IconlyBold.buy),
+              label: 'Cart',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(IconlyLight.profile),
+              activeIcon: Icon(IconlyBold.profile),
+              label: 'Profile',
+            ),
+          ]),
+    );
+  }
+}
