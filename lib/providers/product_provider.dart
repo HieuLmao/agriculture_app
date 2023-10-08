@@ -98,5 +98,9 @@ class ProductsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void removeCartItem(Product product) {
+    _cartList.remove(product);
+    notifyListeners();
+  }
   //add cartItem
 }
