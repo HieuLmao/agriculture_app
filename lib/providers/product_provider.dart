@@ -1,4 +1,3 @@
-import 'package:agriculture_app/models/cart.dart';
 import 'package:agriculture_app/models/service.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';

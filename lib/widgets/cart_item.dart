@@ -1,4 +1,3 @@
-import 'package:agriculture_app/data/products.dart';
 import 'package:agriculture_app/models/product.dart';
 import 'package:agriculture_app/providers/product_provider.dart';
 import 'package:agriculture_app/styles.dart';
