@@ -1,13 +1,16 @@
-import 'package:agriculture_app/data/products.dart';
+import 'package:agriculture_app/providers/product_provider.dart';
 import 'package:agriculture_app/widgets/product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:provider/provider.dart';
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final data = context.read<ProductsProvider>();
+    final products = data.products;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(12.0),
